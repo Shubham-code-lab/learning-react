@@ -12,4 +12,6 @@ have resume on screen and download will show on hover.
 
 have flicker effect on bulb.
 
+have cat chasing the mouse cursor.
+
 initial commit
