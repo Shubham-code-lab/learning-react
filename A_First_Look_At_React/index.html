@@ -1,0 +1,45 @@
+<!-- create sample Doc -->
+<!-- https://react.dev/learn/installation -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Core react library -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- Rendering Layer used to render react into DOM -->
+    <!-- React can also render in native application using react native -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+      // we can't return JSX as we don't have tool that will convert JSX to javascript.
+      //React is coming from react.development.js script
+      //ReactDom is coming from react-dom.development.js script
+
+      function App() {
+        const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+
+        React.useEffect(function () {
+          setInterval(() => {
+            setTime(new Date().toLocaleTimeString());
+          }, 1000);
+        }, []);
+
+        //first argument is to create element.
+        //Second argument is props.
+        //third argument is children of the elements.
+        return React.createElement("header", null, `Hello React It's ${time}`);
+      }
+
+      //   for rendering react
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(App));
+    </script>
+  </body>
+</html>
