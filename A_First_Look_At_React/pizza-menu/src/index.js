@@ -76,15 +76,24 @@ function Header() {
 }
 
 //react function name should be in capital case and it should return null or JSX of one element.
-function Pizza(props) {
-  console.log(props);
+//Destructuring Props.
+function Pizza({ pizza }) {
+  //console.log(props);
+
+  // CONDITIONAL RENDERING WITH MULTIPLE RETURN
+  if (pizza.soldOut) return null;
 
   return (
-    <li>
-      <img src={props.pizza.photoName} alt={props.pizza.name} />
-      <h3>{props.pizza.name}</h3>
-      <p>{props.pizza.ingredients}</p>
-      <span>{props.pizza.price + 3}</span>
+    // CONDITIONALLY SETTING CLASS
+    <li className={`pizza ${pizza.soldOut ? "sold-out" : ""}`}>
+      <img src={pizza.photoName} alt={pizza.name} />
+      <h3>{pizza.name}</h3>
+      <p>{pizza.ingredients}</p>
+
+      {/* CONDITIONALLY SETTING TEXT */}
+      {pizza.soldOut ? <span>SOLD OUT</span> : <span>{pizza.price}</span>}
+
+      {/* <span>{pizza.soldOut ? "SOLD OUT" : pizza.price}</span> */}
     </li>
 
     // <div>
@@ -97,17 +106,43 @@ function Pizza(props) {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
 
-      <ul>
-        {/* Rending List */}
-        {/* key is required for uniqueness */}
-        {pizzaData.map((pizza, index) => (
-          <Pizza pizza={pizza} key={index} />
-        ))}
-      </ul>
+      {/* CONDITIONAL RENDERING USING && */}
+      {/*IMPORTANT :- pizzas.length if return 0 even thou 0 is consider false it will print it in UI as JSX only doesn't print true and false value but can print 0 */}
+      {/* {pizzas && pizzas.length > 0 && (
+        <ul>
+          {pizzaData.map((pizza, index) => (
+            <Pizza pizza={pizza} key={index} />
+          ))}
+        </ul>
+      )} */}
+
+      {/*  CONDITIONAL RENDERING USING TERNARIES */}
+      {pizzas && pizzas.length > 0 ? (
+        // REACT FRAGMENT lets us group some elements without leaving any trace in the HTML tree, so in the DOM.
+        <>
+          {/* OR React.Fragment if want to add key as property for rendering list */}
+          {/* <React.Fragment key="val"></React.Fragment> */}
+          <p>Authentic Italian cuisine. 6 creative dishes to choose from. All from our store oven, all organic, all delicious</p>
+
+          <ul>
+            {/* Rending List */}
+            {/* key is required for uniqueness */}
+            {pizzaData.map((pizza, index) => (
+              <Pizza pizza={pizza} key={index} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        //   we also write null for OR condition of turnary
+        //   null
+        <p>We're still working on our menu. Please come back later :</p>
+      )}
 
       {/* <Pizza name={pizzaData[0].name} ingredients={pizzaData[0].ingredients} photoName={pizzaData[0].photoName} price={pizzaData[0].price} /> */}
       {/* price us string 10 */}
@@ -129,16 +164,34 @@ function Footer() {
   console.log(hour);
   //return <footer className="footer">{new Date().toLocaleTimeString()}. We're currently open</footer>;
 
-  //React doesn't render true or false as value on UI
+  // CONDITIONAL RENDERING WITH MULTIPLE RETURN
+  if (!isOpen) {
+    return (
+      <p>
+        We're happy to welcome you between {openHour}:00 and {closeHour}:00{" "}
+      </p>
+    );
+  }
+
+  //React doesn't render true or false value in UI
   return (
     <footer className="footer">
       {/* CONDITIONAL RENDERING USING && */}
       {/* in javascript mode we are returning JSX hence this work */}
-      {isOpen && (
+      {/* {isOpen && (
         <div className="order">
           <p>We're open until until {closeHour} :00. COme visit us or order online</p>
           <button className="btn">Order</button>
         </div>
+      )} */}
+
+      {/*  CONDITIONAL RENDERING USING TERNARIES */}
+      {isOpen ? (
+        <Order closeHour={closeHour} openHour={openHour} />
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+        </p>
       )}
 
       {/* this true is not render to UI */}
@@ -148,6 +201,17 @@ function Footer() {
 
   //without JSX
   //return React.createElement("footer", null, "We're currently open!");
+}
+
+function Order({ closeHour, openHour }) {
+  return (
+    <div className="order">
+      <p>
+        We're open until until {closeHour}:00 to {openHour}:00. Come visit us or order online
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
 }
 
 //React v18
