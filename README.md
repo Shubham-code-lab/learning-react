@@ -40,3 +40,14 @@ Rerendering is done through Virtual Dom, Fiber tree, and one-way data flow.
 
 npx create-react-app@5 pizza-menu
 npm start
+
+TIPS :-
+use event handler only when you want to run the code on state and props changes or onclick
+use useEffect when you want executing some sync code or after component life cycle
+pass arrow function when you are working with current value of state
+//pass set event handler to child component that child component will have it own event handler which will do some job and pass some data to this set event handler of parent.
+//never mutate object in setState() replace them
+//use lazy evaluation call back function to setState() when we want to set initial state.
+//use useEffect that trigger on certain state update to update external things
+//use one a single hooks for specific logic
+//any hooks that you use in useEffect should be part of your dependency.
