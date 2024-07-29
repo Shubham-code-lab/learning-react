@@ -51,3 +51,31 @@ pass arrow function when you are working with current value of state
 //use useEffect that trigger on certain state update to update external things
 //use one a single hooks for specific logic
 //any hooks that you use in useEffect should be part of your dependency.
+
+
+
+vite to setup react :-
+
+npm create vite@latest
+npm create vite@4
+
+index.html is outside
+index.js is now main.jsx
+
+npm run dev
+
+npm i eslint vite-plugin-eslint eslint-config-react-app --save-dev          //doesn't come up with Eslint we have to manually set-up
+
+.eslintrc.json       //configure eslint create this file
+{
+    "extends": "react-app"
+}
+
+configure with vite add below in the vite.config.js file
+import eslint from 'vite-plugin-eslint'
+plugins: [react(),eslint()],
+
+
+//Installing rect router
+//npm i react-router-dom       //latest
+//npm i react-router-dom@6
