@@ -3,7 +3,10 @@
 import { useState } from "react";
 
 import styles from "./Form.module.css";
+import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
+/* eslint-disable react/prop-types */
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
     .toUpperCase()
@@ -13,8 +16,13 @@ export function convertToEmoji(countryCode) {
 }
 
 function Form() {
+  // IMPORTANT :-
+  //useNavigate() hook used to programmatically navigating 
+  // it used to be called useHistory in previous version
+  const navigate = useNavigate();
+
   const [cityName, setCityName] = useState("");
-  const [country, setCountry] = useState("");
+  // const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
 
@@ -49,8 +57,14 @@ function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <button>Add</button>
-        <button>&larr; Back</button>
+        {/* IMPORTANT */}
+        <Button type="primary" onClick={()=>{}}>Add</Button>
+        {/* passing -1 to navigate back to previous page */}
+        <Button type="back" onClick={(e)=>{
+            e.preventDefault();  //to stop form submiteding and stop reload 
+            navigate(-1)    // -1 to move one step back or we can give any number to move number of step back 
+          }
+        }>&larr; Back</Button>
       </div>
     </form>
   );

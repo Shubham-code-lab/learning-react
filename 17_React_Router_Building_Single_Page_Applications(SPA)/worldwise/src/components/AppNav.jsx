@@ -8,7 +8,13 @@ function AppNav() {
             <ul>
                 <li>
                     {/* IMPORTANT Relative path */}
+                    {/* /app (this path also has / and is consider the default OR index path ) ->  /app/cities */}
+                    {/* /app/countries  ->  /app/cities */}
+
                     <NavLink to='cities'>Cities</NavLink>
+
+                    {/* absolute path  */}
+                    {/* <NavLink to='/urlName'>Cities</NavLink> */}
                 </li>
                 <li>
                     <NavLink to='countries'>Countries</NavLink>
