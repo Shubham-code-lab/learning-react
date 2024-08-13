@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, createContext } from "react";
+import { useContext, useEffect, useState, createContext, memo } from "react";
 import { faker } from "@faker-js/faker";
 import { PostProvider, PostContext, usePosts} from "./PostContext";
 
@@ -32,6 +32,9 @@ function App() {
       </button>
 
       {/* CUSTOM CONTEXT PROVIDER */}
+      {/* IMPORTANT */}
+      {/* when App re-render it will re-render all component below along with PostProvider hence it's value will be recreated then it value object is recreated resulting in all the component to re-render that are using PostProvider context even they are not in App component   */}
+      {/* to solve above please check memoization of value object in PostProvider context file */}
       <PostProvider>
         <Header />
         <Main />
@@ -79,16 +82,18 @@ function Results() {
   return <p>🚀 {posts.length} atomic posts found</p>;
 }
 
-function Main() {
-  const { posts, onAddPost } = usePosts();
+const Main = memo(
+  function Main() {
+    const { posts, onAddPost } = usePosts();
 
-  return (
-    <main>
-      <FormAddPost />
-      <Posts />
-    </main>
-  );
-}
+    return (
+      <main>
+        <FormAddPost />
+        <Posts />
+      </main>
+    );
+  }
+)
 
 function Posts() {
   return (

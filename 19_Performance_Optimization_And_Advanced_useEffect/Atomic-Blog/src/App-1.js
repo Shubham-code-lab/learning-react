@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState, createContext } from "react";
 import { faker } from "@faker-js/faker";
-import { PostProvider, PostContext, usePosts} from "./PostContext";
 
 function createRandomPost() {
   console.log("called");
@@ -10,9 +9,34 @@ function createRandomPost() {
   };
 }
 
-function App() {
+// context PROVIDER
+// we can pass default value but that value can't be change over time so we pass null or keep it empty
+const PostContext = createContext();
 
+function App() {
+  const [posts, setPosts] = useState(() =>
+    Array.from({ length: 30 }, () => createRandomPost())
+  );
+  const [searchQuery, setSearchQuery] = useState("");
   const [isFakeDark, setIsFakeDark] = useState(false);
+
+  // Derived state. These are the posts that will actually be displayed
+  const searchedPosts =
+    searchQuery.length > 0
+      ? posts.filter((post) =>
+          `${post.title} ${post.body}`
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase())
+        )
+      : posts;
+
+  function handleAddPost(post) {
+    setPosts((posts) => [post, ...posts]);
+  }
+
+  function handleClearPosts() {
+    setPosts([]);
+  }
 
   // Whenever `isFakeDark` changes, we toggle the `fake-dark-mode` class on the HTML element (see in "Elements" dev tool).
   useEffect(
@@ -23,28 +47,34 @@ function App() {
   );
 
   return (
-    <section>
-      <button
-        onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-        className="btn-fake-dark-mode"
-      >
-        {isFakeDark ? "☀️" : "🌙"}
-      </button>
+    // context VALUE
+    <PostContext.Provider value={{ 
+      posts: searchedPosts,
+      onAddPost: handleAddPost,
+      onClearPosts: handleClearPosts,
+      searchQuery,
+      setSearchQuery
+    }}>
+      <section>
+        <button
+          onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
+          className="btn-fake-dark-mode"
+        >
+          {isFakeDark ? "☀️" : "🌙"}
+        </button>
 
-      {/* CUSTOM CONTEXT PROVIDER */}
-      <PostProvider>
         <Header />
         <Main />
         <Archive />
         <Footer />
-      </PostProvider>
-    </section>
+      </section>
+    </PostContext.Provider>
   );
 }
 
 function Header() {
   // Context CONSUMER 
-  const { onClearPosts } = usePosts();
+  const { onClearPosts } = useContext(PostContext);
 
   return (
     <header>
@@ -62,7 +92,7 @@ function Header() {
 
 function SearchPosts() {
   // Context CONSUMER 
-  const { searchQuery, setSearchQuery } = usePosts();
+  const { searchQuery, setSearchQuery } = useContext(PostContext);
   return (
     <input
       value={searchQuery}
@@ -74,13 +104,13 @@ function SearchPosts() {
 
 function Results() {
   // Context CONSUMER 
-  const { posts } = usePosts();
+  const { posts } = useContext(PostContext);
 
   return <p>🚀 {posts.length} atomic posts found</p>;
 }
 
 function Main() {
-  const { posts, onAddPost } = usePosts();
+  const { posts, onAddPost } = useContext(PostContext);
 
   return (
     <main>
@@ -99,7 +129,7 @@ function Posts() {
 }
 
 function FormAddPost() {
-  const { onAddPost } = usePosts();
+  const { onAddPost } = useContext(PostContext);
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -130,7 +160,7 @@ function FormAddPost() {
 }
 
 function List() {
-  const { posts } = usePosts();
+  const { posts } = useContext(PostContext);
 
   return (
     <ul>
@@ -145,7 +175,7 @@ function List() {
 }
 
 function Archive() {
-  const { onAddPost } = usePosts();
+  const { onAddPost } = useContext(PostContext);
 
   // Here we don't need the setter function. We're only using state to store these posts because the callback function passed into useState (which generates the posts) is only called once, on the initial render. So we use this trick as an optimization technique, because if we just used a regular variable, these posts would be re-created on every render. We could also move the posts outside the components, but I wanted to show you this trick 😉
   const [posts] = useState(() =>
@@ -197,31 +227,3 @@ export default App;
 //whenever the value is updated then all the consumer(component) that use this value get re-render.
 
 //Custom provider and Hook
-
-
-//Type of state :-
-//1] State Accessibility :-
-//a] Local STATE :-
-//Needed only by one or few components.
-//Only accessible component and child components. 
-//b] Global State :-
-//Might be needed by many components.
-//Accessible to every component in the application.
-
-//2] State Domain :-
-//a]Remote state :-
-//All application data loaded from a remote server(API).
-//Usually asynchronous
-//Needs re-fectching + updating
-//b]UI State :-
-//Everything else
-//Theme, list filters, form data, etc.
-//usually syncronous and stored in the application
-
-//State placement options :-
-//use Local state in Local component using useState, useReducer and useRef.
-//use Lifting up state in Parent component using useState, useReducer and useRef.
-//use Global state (preferably UI state) in Context using Context API + useState or useReducer.
-//use Global state (remote or UI) in 3rd party library using Redux, React Query, SWR, Zustand, etc.
-//use Global state, passing between pages in URL by using React Router.
-//to store data in user's browser use Local storage, session storage, etc store data in user's browser.
