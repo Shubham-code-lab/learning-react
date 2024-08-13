@@ -4,6 +4,8 @@ light on on website using switch that is triiger using solving and electronic ga
 show current throught wire yellow collow with black then have bulb color will be bright near buld and dark as go far
 one bulb will switch off as other bulb turn on on scroll
 
+new idea create vs code extension to display component tree
+
 have terminal command prompt like this website
 https://guillaumereygner.fr/
 https://dimden.dev/
@@ -79,3 +81,13 @@ plugins: [react(),eslint()],
 //Installing rect router
 //npm i react-router-dom       //latest
 //npm i react-router-dom@6
+
+
+//Installing react-leaflet which is built on top of leaflet 
+npm i react-leaflet leaflet
+
+
+//IMPORTANT
+// always best to have primitives in the dependencies array
+{/* react garunties that the set function of isFakeDark always garuntiess stable identities (will not change on renders). as setsetter function are already memoize */}
+      {/* so it okay to not includes these setter function in the hooks i.e :- useEffect,useCallback, useMemo */}

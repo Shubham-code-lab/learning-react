@@ -187,41 +187,8 @@ function Footer() {
 export default App;
 
 
-//Context API :-
-//all component everywhere in the tree to read state shared by context.
-//System to pass data throughout the app without manually  passing props down the tree.
-//Allow us to "broadcast" global state to the entire app.
-//1] Provider: gives all child components access to value.
-//2] value: data that we want to make available (usually state and function)
-//3] Consumers: all components that read the provided context value
-//whenever the value is updated then all the consumer(component) that use this value get re-render.
 
-//Custom provider and Hook
-
-
-//Type of state :-
-//1] State Accessibility :-
-//a] Local STATE :-
-//Needed only by one or few components.
-//Only accessible component and child components. 
-//b] Global State :-
-//Might be needed by many components.
-//Accessible to every component in the application.
-
-//2] State Domain :-
-//a]Remote state :-
-//All application data loaded from a remote server(API).
-//Usually asynchronous
-//Needs re-fectching + updating
-//b]UI State :-
-//Everything else
-//Theme, list filters, form data, etc.
-//usually syncronous and stored in the application
-
-//State placement options :-
-//use Local state in Local component using useState, useReducer and useRef.
-//use Lifting up state in Parent component using useState, useReducer and useRef.
-//use Global state (preferably UI state) in Context using Context API + useState or useReducer.
-//use Global state (remote or UI) in 3rd party library using Redux, React Query, SWR, Zustand, etc.
-//use Global state, passing between pages in URL by using React Router.
-//to store data in user's browser use Local storage, session storage, etc store data in user's browser.
+//Optimizing context when three things are true :-
+//1] when state in the context need to change all the time.
+//2] context has many consumer
+//3] when app is slow 
