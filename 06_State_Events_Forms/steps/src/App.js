@@ -27,7 +27,7 @@ function App() {
   const handleNext = function () {
     if (step < 3) setStep(step + 1);
     setDetail({ name: "Jeevan" });
-    //as state are immutable we should not update it like this way.
+    //as state are immutable we should not update it like this way even if it work.
     //detail.name = "Jeevan";
   };
 

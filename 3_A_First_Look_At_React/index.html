@@ -12,7 +12,9 @@
     <div id="root"></div>
 
     <!-- Core react library -->
+    <!-- used to use component, state, react stuff  -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
     <!-- Rendering Layer used to render react into DOM -->
     <!-- React can also render in native application using react native -->
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -29,7 +31,7 @@
           setInterval(() => {
             setTime(new Date().toLocaleTimeString());
           }, 1000);
-        }, []);
+        }, []);  //to only execute it for first time otherwise react will re-initialize setInterval again and again
 
         //first argument is to create element.
         //Second argument is props.

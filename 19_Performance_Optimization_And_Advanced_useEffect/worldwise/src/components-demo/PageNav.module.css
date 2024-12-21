@@ -1,0 +1,29 @@
+/* select all UI element in the entire application */
+/* ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+} */
+
+
+/* using class it give some random ID to it  "_nav_1s9vf_8" */
+.nav{
+    background-color: orangered;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none; 
+}
+
+/* will not work as there will some ID attached to class name so we have to make it global */
+.nav .active {}
+/* so to make it global */
+.nav :global(.active){
+    background-color: green;
+}
+
+:global(.test) {
+    background-color: red;
+}

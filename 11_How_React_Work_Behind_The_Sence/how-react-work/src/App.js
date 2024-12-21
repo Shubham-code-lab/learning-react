@@ -45,7 +45,7 @@ function Tabbed({ content }) {
         <Tab num={3} activeTab={activeTab} onClick={setActiveTab} />
       </div>
 
-      {/* If component is not removed from UI and only props or changed then is not re-initialize hence it state remain same */}
+      {/* If component is not removed from UI and only props or changed then is not re-initialize hence it state remain same it just re-render */}
       {/* {activeTab <= 2 ? <TabContent item={content.at(activeTab)} /> : <DifferentContent />} */}
 
       {/* adding key will now re-initalize component and it state when we switch key */}
@@ -153,6 +153,7 @@ function DifferentContent() {
 //1]Render is Triggered :-
 //a]Initial rendering of the application.
 //b]State is updated in one or more component instances (re-render).
+//render is trigger for entire application and not just for single component.
 //Render are not trigger immediately, but scheduled  for when the js engine has free time.
 //There is also batching of multiple 'setState' calls in event handlers.
 
@@ -169,7 +170,7 @@ function DifferentContent() {
 //Fiber is reconciler in react
 //Fiber tree :- internal tree that has a "fiber" for each component instance and DOM element.
 //unlike react element, fiber are not created on every render so it is never destroyed it is just mutated.
-//fiber keep track of current state, Props, side effects and Used hooks.
+//fiber keep track of current state, Props, side effects and list of Used hooks.
 //each fiber also contain queue of work to do like updating state, updating refs, running registered side effects, performing DOM updated and so on which is perform async.
 //fiber tree is organised in linked list.
 //both react element tree/virtual DOM and fiber tree can also contain HTML elements along with component.

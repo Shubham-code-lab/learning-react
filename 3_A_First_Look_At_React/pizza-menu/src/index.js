@@ -145,9 +145,9 @@ function Menu() {
       )}
 
       {/* <Pizza name={pizzaData[0].name} ingredients={pizzaData[0].ingredients} photoName={pizzaData[0].photoName} price={pizzaData[0].price} /> */}
-      {/* price us string 10 */}
+      {/* price is string 10 */}
       {/* <Pizza name={pizzaData[1].name} ingredients={pizzaData[1].ingredients} photoName={pizzaData[1].photoName} price="99" /> */}
-      {/* price us integer 10 */}
+      {/* price is integer 10 */}
       {/* <Pizza name={pizzaData[2].name} ingredients={pizzaData[2].ingredients} photoName={pizzaData[2].photoName} price={99} /> */}
     </main>
   );
@@ -230,9 +230,12 @@ root.render(
 //React before 18
 //ReactDom.render(<App />, document.getElementById("root"));
 
+//webpack the module bundler expect the file call index.js in src folder as entry point.
+
 //React Applications are entirely made out of components
 //react render a view for each component and all these view create a webpage (UI)
 //Each component has it own Data, Logic and Appearance.
+//component can be reused ,nested inside each other, pass data between them
 
 //JSX is extension of javascript. it is declarative approach that allow us to embed Javascript, CSS and React components into HTML.
 //Babel is used to convert Each JSX element into React.createElement nested function call.(hence we can write react without jsx).
@@ -243,7 +246,7 @@ root.render(
 //props :-
 //pass data from parent to child which create communication between two component.
 //parent component configure and customize the child component.
-//props data is only updated in parent component. hence they are immutable in child component.
+//props data is only updated in parent component. hence they are immutable in child component.  (if we pass set() function from parent to child will call function and request a change in parent component(who control that state to update that state) which led to parent re-render and prop update that are passed to child).
 //state is internal data that can be updated by the component's logic.
 //React is all about pure function. so updating props outside of parent component will create side effect(not pure).
 //one-way data flow data only passed from parent to child

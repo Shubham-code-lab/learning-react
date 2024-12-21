@@ -1,4 +1,5 @@
 export default function Stats({ items }) {
+  //please check this early return allowed before derived state ?
   if (!items.length)
     return (
       <p className="footer">

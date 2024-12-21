@@ -81,8 +81,8 @@ export default function App() {
   );
 }
 
-// passing element as props
-// function Box({ element }) {
+// passing elements as props
+// function Box({ element }) {       //name can be anything 
 
 // component composition using children props
 function Box({ children }) {
@@ -282,7 +282,7 @@ function WatchedMovie({ movie }) {
 //prop drilling :-
 //passing the props to several nested child component to get the data in deeply nested component.
 
-//COMPONENT COMPOSITION :-
+//COMPONENT COMPOSITION :- (not tightly coupled as you pass or don't pass component as children)
 //combining different components using the children prop (or explicitly defined props)
 //it is done through children props.
 //usecase :- create highly reusable and flexible components and Fix prop drilling.

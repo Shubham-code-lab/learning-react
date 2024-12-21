@@ -30,7 +30,7 @@ have flicker effect on bulb.
 
 have cat chasing the mouse cursor.
 
-React is a Component-Based, Declarative, state-driven Javascript library.
+React is a Component-Based, Declarative, state-driven, Javascript library.
 
 Declarative :- tell how component work and look by current data/state using declarative syntax called JSX (HTML, javascript ,CSS and referencing other components).
 
@@ -49,7 +49,7 @@ use useEffect when you want executing some sync code or after component life cyc
 pass arrow function when you are working with current value of state
 //pass set event handler to child component that child component will have it own event handler which will do some job and pass some data to this set event handler of parent.
 //never mutate object in setState() replace them
-//use lazy evaluation call back function to setState() when we want to set initial state.
+//use lazy evaluation call back function to setState() when we want to set initial state.  (when we don't want our local variable to be calculated for each re-render)
 //use useEffect that trigger on certain state update to update external things
 //use one a single hooks for specific logic
 //any hooks that you use in useEffect should be part of your dependency.
@@ -93,5 +93,42 @@ npm i react-leaflet leaflet
       {/* so it okay to not includes these setter function in the hooks i.e :- useEffect,useCallback, useMemo */}
 
 
-//change email commit test
 
+//npm run build
+
+
+//npm i redux
+
+//npm i redux-thunk
+
+
+//Redux DevTools
+
+//npm i redux-devtools-extension
+//npm install redux-devtools-extension --legacy-peer-deps    //version doesn't match
+
+
+npm install @reduxjs/toolkit      //need to uninstall redux-devtools-extension
+
+
+
+
+
+
+
+//tanstack is also used in sevlte, Vue
+ npm i @tanstack/react-query@4
+
+
+ //react query dev tools
+ npm i @tanstack/react-query-devtools@4
+
+
+//date formatting
+ npm i date-fns
+
+ //Display Toast
+ npm i react-hot-toast
+
+ //React Hook form
+ npm i react-hook-form@7

@@ -38,6 +38,7 @@ function App() {
       <Logo />
       {/* check the naming convention used for event name */}
       <Form onAddItems={handleAddItems} />
+      {/* event handler are passed and not the setState(setItems) function */}
       <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} onClearItems={handleClearItems} />
       <Stats items={items} />
     </div>

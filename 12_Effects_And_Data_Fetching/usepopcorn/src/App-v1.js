@@ -54,7 +54,7 @@ export default function App() {
   const [query, setQuery] = useState("");
   //const [watched, setWatched] = useState([]);
 
-  //react will can on every render so bad code
+  //react will call on every render even it thou it don't assign the value so bad code
   //const [watched, setWatched] = useState(JSON.parse(localStorage.getItem('watched'));
   //OR
   //useEffect(function(){
@@ -319,8 +319,8 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   //CUSTOM HOOK
   useKey("Enter", onCloseMovie);
 
-  useEffect(
-    function () {
+  useEffect(//IMPORTANT :- useEffect callback function is sync to prevent race condition.
+    function () {  
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`);
@@ -509,7 +509,7 @@ function WatchedMovie({ movie, onDeleteWatch }) {
 
 //UseEffect cleanup function :-
 //Function that we can return from an effect(optional).
-//Necessary whenever the side effect keeps happening after the component has been re-render or unmounted.
+//IMP :-//Necessary whenever the side effect keeps happening after the component has been re-render or unmounted. (to fix issue :- call to an api even when first is still in progress race condition (and don't know which one will arrive last as that data will be finally stored in the state))
 //component re-render can trigger the event 
 //Each useEffect hook should only perform specific/one side effect task.
 //USE Case :-
@@ -517,6 +517,7 @@ function WatchedMovie({ movie, onDeleteWatch }) {
 //API subscription -> cancel subscription
 //Start timer  -> stop timer
 //Add event Listener -> Remove Listener
+//suppose you have timer that start when useEffect execute before that you have to stop previous time if there is any to be stopped and when component unmount hat time also we have are no need of that timer so we have to stop at time time (hence clean up function run before that useEffect is running and also after when component unmount)
 //RUN On :-
 //1] run before the effect is executed again.
 //2] After a component has unmounted.
