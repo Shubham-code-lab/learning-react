@@ -78,7 +78,6 @@ function App() {
 export default App;
 
 
-
 //react query :- (data fetching and remote state management)  alternative (SWR , RTK query)
 //powerful library for managing remote (server) state
 //Many feature that allow us to write a lot less code, while also making  the UX a lot better.

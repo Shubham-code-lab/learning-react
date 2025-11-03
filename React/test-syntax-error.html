@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX Syntax Error Demo</title>
+</head>
+<body>
+    <h1>Open Console to See Errors!</h1>
+    
+    <h2>Test 1: JSX WITHOUT Babel (Will Error!)</h2>
+    <div id="test1">Check console for error...</div>
+    
+    <h2>Test 2: JSX WITH Babel (Works!)</h2>
+    <div id="test2"></div>
+    
+    <!-- Load React for test 2 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- 
+        TEST 1: Try to run JSX directly WITHOUT Babel
+        This WILL cause a syntax error!
+    -->
+    <script>
+        console.log('=== TEST 1: JSX WITHOUT BABEL ===');
+        
+        try {
+            // This will cause: SyntaxError: Unexpected token '<'
+            function App() {
+                return <div>This will error!</div>;
+            }
+            
+            document.getElementById('test1').textContent = 'Success (should not see this)';
+        } catch (error) {
+            console.error('❌ ERROR (as expected):', error.message);
+            document.getElementById('test1').innerHTML = 
+                `<span style="color: red;">ERROR: ${error.message}</span>`;
+        }
+    </script>
+    
+    <!-- 
+        TEST 2: Run JSX WITH Babel
+        type="text/babel" tells Babel to transpile first!
+    -->
+    <script type="text/babel">
+        console.log('=== TEST 2: JSX WITH BABEL ===');
+        
+        function App() {
+            // Babel converts this to React.createElement before browser sees it
+            return <div style={{ color: 'green' }}>✅ Success! JSX works with Babel!</div>;
+        }
+        
+        ReactDOM.createRoot(document.getElementById('test2')).render(<App />);
+        console.log('✅ No error! Babel transpiled JSX to valid JavaScript');
+    </script>
+    
+    <!-- Show what Babel does -->
+    <script type="text/babel">
+        console.log('=== WHAT BABEL ACTUALLY DOES ===');
+        
+        // What you write:
+        const jsxCode = `
+        function App() {
+            return <div>Hello</div>;
+        }
+        `;
+        
+        // What Babel transforms it to:
+        const transpiledCode = `
+        function App() {
+            return React.createElement('div', null, 'Hello');
+        }
+        `;
+        
+        console.log('YOU WRITE (JSX):', jsxCode);
+        console.log('BABEL TRANSFORMS TO:', transpiledCode);
+        console.log('BROWSER ONLY SEES THE TRANSFORMED CODE!');
+    </script>
+</body>
+</html>
+

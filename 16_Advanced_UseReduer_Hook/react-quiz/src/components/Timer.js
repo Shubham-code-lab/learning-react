@@ -13,7 +13,7 @@ function Timer({dispatch, secondsRemaining}) {
         return ()=>{
             clearInterval(timerID);
         }
-    },[])
+    },[])  //[] useEffect only run on component mount and not on re-render
 
     return (
         <div className="timer">

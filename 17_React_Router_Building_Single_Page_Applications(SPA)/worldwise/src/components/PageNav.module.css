@@ -1,3 +1,4 @@
+/* if "nav" same class name is present in different css file then it will have different id attached to it's end to differenciate i.e :- _nav_hqhhq_1 */
 .nav {
   display: flex;
   align-items: center;

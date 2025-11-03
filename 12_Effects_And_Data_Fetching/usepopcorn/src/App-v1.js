@@ -560,5 +560,3 @@ function WatchedMovie({ movie, onDeleteWatch }) {
 //Allow us to reuse state full logic or multiple hooks,that is non-visual logic among multiple component.
 //they use at-least use one or more hooks and return some data in array or object format.
 //function name should start with "use" prefix.
-
-//test commit

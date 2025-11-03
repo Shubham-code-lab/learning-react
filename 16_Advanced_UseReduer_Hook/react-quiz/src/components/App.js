@@ -17,7 +17,7 @@ const initialState = {
   questions: [],
   //"loading", "error", "ready", "active", "finished"
   status: "loading",
-  index: 0,  //index is state as when it change it should re-render the component
+  index: 0,  //index (index of question) is state as when it change it should re-render the component and show new question at screen
   answer: null,
   points: 0,
   highScore: 0,
@@ -153,6 +153,13 @@ export default App;
 //Used to create fake API
 //In package.json add script :-  "server": "json-server --watch data/questions.json --port 8000"
 //http://localhost:8000/questions
+
+//State with useReducer (behave like array.reduce()) :- 
+//for complex state and related pieces of state object.
+//useReducer need reducer function containing all logic to update state. "Decoupes state logic from component".
+// reducer is pure function (no side effect) that that take current state and action and returns the next state.
+// action contain type and payload using witch the new state is created.
+// dispactch used to trigger state updates
 
 //UseReducer vs UseState :-
 

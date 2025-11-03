@@ -12,7 +12,7 @@ function Homepage() {
 
             <Link to="/app">App</Link>
 
-            {/* using anchor tag page will reload */}
+            {/* using anchor tag will redirect but reload the page */}
             {/* <a href="/pricing">Pricing</a> */}
         </div>
     )

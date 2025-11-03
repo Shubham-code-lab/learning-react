@@ -1,0 +1,442 @@
+{
+    "meta": {
+      "account_id": "string",
+      "resource_name": "string",
+      "resource_id": "string",
+      "created_at": "2019-08-24T14:15:22Z",
+      "modified_at": "2019-08-24T14:15:22Z",
+      "modification_counter": 0,
+      "status": "CREATED"
+    },
+    "tags": [
+      {
+        "key": "string",
+        "value": "string"
+      }
+    ],
+    "asset_type": "episode",
+    "parent_ingest_url": "https://goo.boo.tv/ingests/123.mrss",
+    "ingest_instance": "string",
+    "publisher_asset_id": "string",
+    "asset_title": "string",
+    "series_id": "string",
+    "season_id": "string",
+    "priority": "level1",
+    "ingest_id": "string",
+    "ingest_name": "string",
+    "ingest_type": "mrss",
+    "asset_related_links": {
+      "asset_artifacts": [
+        {
+          "asset_artifact_url": "http://example.com",
+          "asset_tag": "string"
+        }
+      ],
+      "jobs": [
+        {
+          "job_url": "http://example.com",
+          "job_status": "Pending",
+          "asset_tag": "string"
+        }
+      ],
+      "workflows": [
+        {
+          "workflow_url": "http://example.com",
+          "workflow_template": "string",
+          "workflow_status": "string"
+        }
+      ]
+    },
+    "qc_report": [
+      {
+        "qc_target": "string",
+        "report": {
+          "av_pts_difference_check": {
+            "threshold": 1000,
+            "sections": [
+              {
+                "id": 0,
+                "disabled": true,
+                "audio_track_id": 0,
+                "difference_observed": 5000,
+                "threshold": 3500,
+                "video_start_timestamp": 65000,
+                "audio_start_timestamp": 120000,
+                "status": "pass"
+              }
+            ],
+            "disabled": false,
+            "status": "pass"
+          },
+          "freeze": {
+            "threshold": 0,
+            "sections": [
+              {
+                "id": 0,
+                "start_ms": 0,
+                "end_ms": 0,
+                "duration": 0,
+                "segment_id": 0,
+                "disabled": true,
+                "status": "pass"
+              }
+            ],
+            "disabled": true,
+            "status": "pass"
+          },
+          "black_frames": {
+            "threshold": 0,
+            "sections": [
+              {
+                "id": 0,
+                "start_ms": 0,
+                "end_ms": 0,
+                "duration": 0,
+                "segment_id": 0,
+                "disabled": true,
+                "status": "pass"
+              }
+            ],
+            "disabled": true,
+            "status": "pass"
+          },
+          "silence": {
+            "threshold": 0,
+            "sections": [
+              {
+                "id": 0,
+                "start_ms": 0,
+                "end_ms": 0,
+                "duration": 0,
+                "segment_id": 0,
+                "disabled": true,
+                "status": "pass",
+                "audio_track_id": 0
+              }
+            ],
+            "disabled": true,
+            "status": "pass"
+          },
+          "loudness": {
+            "threshold": 0,
+            "sections": [
+              {
+                "id": 0,
+                "observed_loudness": 0,
+                "audio_track_id": 0,
+                "disabled": true,
+                "status": "pass"
+              }
+            ],
+            "disabled": true,
+            "status": "pass"
+          },
+          "min_video_duration_check": {
+            "threshold": 0,
+            "disabled": true,
+            "status": "pass"
+          },
+          "video_resolution_check": {
+            "resolution": [
+              {
+                "width": 0,
+                "height": 0
+              }
+            ],
+            "disabled": true,
+            "status": "pass"
+          },
+          "subtitle_validations": [
+            {
+              "language_code": "en",
+              "file_name": "123.vtt",
+              "format": "vtt",
+              "size": 12345,
+              "duration": 120.5,
+              "error_message": "Subtitle file is not in a valid format, error message from Cloudport.",
+              "duration_check": {
+                "threshold": 6,
+                "status": "pass",
+                "disabled": false
+              },
+              "duration_exceeds_video_duration_check": {
+                "subtitle_duration": "02:04:12:00",
+                "video_duration": "02:04:14:00",
+                "status": "pass",
+                "disabled": false
+              },
+              "line_length_check": {
+                "threshold": 10,
+                "lines": [
+                  {
+                    "line_number": 1,
+                    "event_number": 1,
+                    "start_timestamp": 1,
+                    "end_timestamp": 2,
+                    "line_text": "string",
+                    "character_length": 44
+                  }
+                ],
+                "status": "pass",
+                "disabled": false
+              }
+            }
+          ],
+          "reason": "errors found in segmented content"
+        },
+        "status": "SUCCESS",
+        "timestamp": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "ingest_history": [
+      {
+        "ingest_id": "id1",
+        "ingest_type": "mrss",
+        "source_url": "http://source.com/1",
+        "transformed_url": "http://transformer.com/1",
+        "timestamp": "2023-01-01T10:30:00Z",
+        "trace_id": "trace123",
+        "updated_fields": [
+          "video",
+          "subtitle"
+        ]
+      }
+    ],
+    "media_resource_urls": [
+      {
+        "url": "http://example.com",
+        "kind": "original, generatedMeta, preview",
+        "framerate": "string",
+        "is_primary": null,
+        "is_downloadable": null,
+        "content_type": "string",
+        "media_hash": "string",
+        "moved_url": "string"
+      }
+    ],
+    "image_resource_urls": [
+      {
+        "url": "http://example.com",
+        "kind": "original, generatedMeta, preview",
+        "framerate": "string",
+        "is_primary": null,
+        "is_downloadable": null,
+        "content_type": "string",
+        "media_hash": "string",
+        "moved_url": "string"
+      }
+    ],
+    "subtitle_resource_urls": [
+      {
+        "url": "http://example.com",
+        "kind": "original, generatedMeta, preview",
+        "framerate": "string",
+        "is_primary": null,
+        "is_downloadable": null,
+        "content_type": "string",
+        "media_hash": "string",
+        "moved_url": "string"
+      }
+    ],
+    "generated_subtitle_resource_urls": [
+      {
+        "url": "http://example.com",
+        "kind": "original, generatedMeta, preview",
+        "framerate": "string",
+        "is_primary": null,
+        "is_downloadable": null,
+        "content_type": "string",
+        "media_hash": "string",
+        "moved_url": "string"
+      }
+    ],
+    "asset_uri": "string",
+    "workflows_url": "string",
+    "trace_id": "string",
+    "has_child_collection": true,
+    "asset_status": {
+      "mm_asset_status": "metadata_ingested",
+      "mm_resource_status": {
+        "media": {
+          "status": "success",
+          "substatus": [
+            {
+              "type": "ingestion_in_progress",
+              "source_url": "string",
+              "text": "string"
+            }
+          ]
+        },
+        "images": {
+          "status": "success",
+          "substatus": [
+            {
+              "type": "image_missing",
+              "source_url": "string",
+              "text": "string"
+            }
+          ]
+        },
+        "subtitles": {
+          "status": "success",
+          "substatus": [
+            {
+              "type": "ingestion_in_progress",
+              "source_url": "string",
+              "text": "string"
+            }
+          ]
+        }
+      },
+      "metadata_status": "updated",
+      "metadata_status_updated_at": "2019-08-24T14:15:22Z",
+      "metadata_fields_updated": [
+        "string"
+      ],
+      "ingest_wf_status": "pending",
+      "ingest_status_updated_at": "2019-08-24T14:15:22Z",
+      "ingest_status_details": {
+        "jobs_status_details": [
+          {
+            "job_url": "/jobs/{jobs_id}",
+            "job_status": "Pending",
+            "source_url": "https://goo.boo.1.mp4",
+            "aa_result_description": "original/media",
+            "job_type": "fetch_media",
+            "storage_url": "string",
+            "root_resource_type": "media",
+            "error_message": "string",
+            "error_details": {
+              "error_code": "string",
+              "error_details": {
+                "property1": "string",
+                "property2": "string"
+              }
+            }
+          }
+        ]
+      },
+      "processing_wf_status": "pending",
+      "processing_status_updated_at": "2019-08-24T14:15:22Z",
+      "processing_status_details": {
+        "jobs_status_details": [
+          {
+            "job_url": "/jobs/{jobs_id}",
+            "job_status": "Pending",
+            "source_url": "https://goo.boo.1.mp4",
+            "aa_result_description": "original/media",
+            "job_type": "fetch_media",
+            "storage_url": "string",
+            "root_resource_type": "media",
+            "error_message": "string",
+            "error_details": {
+              "error_code": "string",
+              "error_details": {
+                "property1": "string",
+                "property2": "string"
+              }
+            }
+          }
+        ]
+      },
+      "playout_transcoding_status": "pending",
+      "playout_transcoding_status_updated_at": "2019-08-24T14:15:22Z",
+      "playout_transcoding_status_details": [
+        {
+          "channel_code": "string",
+          "transcoding_status": "pending"
+        }
+      ],
+      "vod_metadata_status": true,
+      "vod_metadata_status_updated_at": "2019-08-24T14:15:22Z",
+      "vod_metadata_status_details": {
+        "status": "success",
+        "substatus": [
+          {
+            "type": "ai_generated_metadata_write_failed",
+            "text": "string"
+          }
+        ]
+      },
+      "linear_metadata_status": true,
+      "linear_metadata_status_updated_at": "2019-08-24T14:15:22Z",
+      "linear_metadata_status_details": {
+        "status": "success",
+        "substatus": [
+          {
+            "type": "ai_generated_metadata_write_failed",
+            "text": "string"
+          }
+        ]
+      },
+      "missing_vod_resource": true,
+      "missing_linear_resource": true,
+      "playout_readiness": true,
+      "missing_resource_details": {
+        "missing_media": true,
+        "missing_subtitle": true,
+        "missing_image": true
+      }
+    },
+    "cloudport_status": {
+      "asset_id": "string",
+      "qc_report": {
+        "video_status": "qc_failed",
+        "duration": {
+          "threshold": 0,
+          "failures": [
+            null
+          ]
+        },
+        "freeze": {
+          "threshold": 0,
+          "failures": [
+            {
+              "segment_id": 0,
+              "offset": 0,
+              "duration": 0,
+              "track_pid": 0,
+              "asset_id": "string"
+            }
+          ]
+        },
+        "black_frames": {
+          "threshold": 0,
+          "failures": [
+            {
+              "segment_id": 0,
+              "offset": 0,
+              "duration": 0,
+              "track_pid": 0,
+              "asset_id": "string"
+            }
+          ]
+        },
+        "silence": {
+          "threshold": 0,
+          "failures": [
+            {
+              "segment_id": 0,
+              "offset": 0,
+              "duration": 0,
+              "track_pid": 0,
+              "asset_id": "string"
+            }
+          ]
+        },
+        "loudness": {
+          "threshold": 0,
+          "failures": [
+            null
+          ]
+        },
+        "subtitle_reports": [
+          {
+            "subtitle_status": "qc_failed",
+            "subtitle_qc_message": "string",
+            "subtitle_href": "string"
+          }
+        ]
+      }
+    }
+  }
