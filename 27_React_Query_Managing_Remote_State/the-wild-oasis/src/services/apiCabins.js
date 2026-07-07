@@ -28,8 +28,9 @@ export async function deleteCabin(id){
 
 export async function createEditCabin(newCabin, id){
   console.log("newCabin",newCabin);
-  const hasImagePath = newCabin.image.name?.startsWith(supabaseUrl);
+  const hasImagePath = newCabin.image?.startsWith(supabaseUrl);
 
+  //Supabase will create folder path if we have forward slash in the image name. which we don't want.
   const imageName = `${Math.random()}-${newCabin.image.name}`.replace("/", ""); 
   // https://zbqxefvvgeadxzhisdvl.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg
   // https://zbqxefvvgeadxzhisdvl.supabase.co
@@ -68,7 +69,7 @@ export async function createEditCabin(newCabin, id){
   const { error: storageError } = await supabase
     .storage
     .from('cabin-images')
-    .upload(imageName, newCabin.image);
+    .upload(imageName, newCabin.image);  //image name determine which image is linked to which cabin
 
 
   //delete cabin data if image was not uploaded

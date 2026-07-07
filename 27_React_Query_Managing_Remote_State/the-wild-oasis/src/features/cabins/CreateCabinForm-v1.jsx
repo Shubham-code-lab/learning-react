@@ -35,7 +35,7 @@ function CreateCabinForm({ cabinToEdit, closeModal }) {
 
       reset();
     },
-    //if API  fail react query will try to make call again and again for some time to updated the data
+    // useMutation does NOT retry by default. Add retry: 3 to enable retries
     onError: err => toast.error(err.message)   //error thrown by mutation function createCabin
   });
 

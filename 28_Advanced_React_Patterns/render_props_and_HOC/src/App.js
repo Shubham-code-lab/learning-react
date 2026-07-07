@@ -29,14 +29,14 @@ function ProductItem({ product }) {
 }
 
 function CompanyItem({ company, defaultVisibility }) {
-  const [isVisible, setIsVisisble] = useState(defaultVisibility);
+  const [isVisible, setIsVisible] = useState(defaultVisibility);
 
   return (
     <li
       className="company"
-      onMouseEnter={() => setIsVisisble(true)}
-      onMouseLeave={() => setIsVisisble(false)}
-    >
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+    > 
       <p className="company-name">{company.companyName}</p>
       {isVisible && (
         <p className="company-phrase">
@@ -94,6 +94,9 @@ export default function App() {
       <div className="col-2">
         {/* 
           RENDER PROPS PATTERN (Inversion of Control)
+          - Use when you want to reuse a component's stateful logic of reusable component(state) while allowing the PARENT to control what gets rendered(JSX)
+          - We can pass the reusable component's state to the render function. We can also have multiple render functions in the reusable component.
+          - we can combine render function with children prop to make it more flexible.
 
           - We pass a function (called a render prop) to the `List` component that tells it *how* to render each item.
           - The `List` component itself does not know what kind of item it's rendering — it simply calls the `render` function passed to it for each item.
@@ -134,6 +137,7 @@ export default function App() {
 
 // HIGHER ORDER COMPONENT (HOC) :- it is simple component that takes in another component and return a enhanced version of it
 function ProductList({ title, items }) {
+  //may be toggle logic or any other logic.
   return (
     <ul className="list">
       {items.map((product) => (

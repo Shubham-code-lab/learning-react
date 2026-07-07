@@ -14,9 +14,9 @@ export default function App() {
         hideDecrease={false}
       />
 
-      {/* he just have to remove add or re-order as per requirement hence flexible */}
+      {/* we just have to remove add or re-order as per requirement hence flexible */}
       {/* we use context for component communication and not props */}
-      <Counter>
+      <Counter> 
         {/* we are passing as children props so that they will get access to context inside counter */}
         <Counter.Label>My super flexible counter</Counter.Label>
         <Counter.Increase icon="+" />
@@ -40,6 +40,7 @@ export default function App() {
 
 //Compound component :-
 //we can create set of related component that together achieved common task. (modal window, tables, pagination)
+// e.g :- parent component with many children components that make sense when only used together.
 //In term of html(select element the option element can only be used inside html select element).
 
-//flexible , reusable and no props. 
+//flexible , reusable and no props.

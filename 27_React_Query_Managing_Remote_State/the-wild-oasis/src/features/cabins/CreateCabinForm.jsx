@@ -62,8 +62,9 @@ function CreateCabinForm({ cabinToEdit = {}, closeModal }) {
       },
       {
         //IMPORTANT  :- 
-        //As reset() is coming from react-hook-form we can use it in custom hook which is in other file 
-        //So react query allow to pass object of options as second argument
+        // reset() is specific to THIS component's form, so we can't put it in the custom hook
+        // React Query lets us pass onSuccess as a 2nd argument to add component-specific logic
+        // Both onSuccess callbacks will run (hook's + this one)
         onSuccess: (data) => {
           console.log(data);  //we also get response data from function that make API call if it return anything
           reset();

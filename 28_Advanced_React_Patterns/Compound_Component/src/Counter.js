@@ -39,6 +39,7 @@ function Decrease({icon}){
 }
 
 //4. Add child components as properties to parent component
+// everything in javascript is an object so we can add properties to this function just like object.
 Counter.Count = Count;
 Counter.Label = Label;
 Counter.Increase = Increase;

@@ -57,6 +57,7 @@ const PageNotFound  = lazy(()=> import("./pages/PageNotFound"));
 function App() {
   console.log("app component will not re-render when context data is updated");
   return (
+    // Order matters! Put rarely-changing contexts (Auth) on top, frequently-changing (Cities) inside.
     <AuthProvider>
     <CitiesProvider>
       <div>
@@ -128,3 +129,15 @@ export default App;
 //a] Response to user event (use event handler instead)
 //b] Fetching data on component mount. (user React query instead)
 //c] Synchronizing state changes with one another (means setting state based on another state variable) (use derived state instead)
+
+
+
+// Extras :-
+// ❌ DON'T use Context for:
+// Frequently changing values (every keystroke, mouse move)
+// Data that only 2-3 components need (use props!)
+// Remote server state (use React Query/SWR instead)
+// ✅ DO use Context for:
+// Theme, language, auth (rarely change)
+// Global UI state (modal, sidebar open/closed)
+// Deeply nested prop drilling scenarios

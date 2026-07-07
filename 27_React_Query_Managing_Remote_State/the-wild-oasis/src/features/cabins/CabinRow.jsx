@@ -4,6 +4,8 @@ import { formatCurrency } from '../../utils/helpers';
 import { useState } from 'react';
 import CreateCabinForm from './CreateCabinForm';
 import { useDeleteCabin } from './useDeleteCabin';
+import { useMutation } from '@tanstack/react-query';
+import { deleteCabin as deleteCabinApi } from '../../services/apiCabins';
 import { HiPencil, HiSquare2Stack, HiTrash } from 'react-icons/hi2';
 import { useCreateCabin } from './useCreateCabin';
 // import { useDeleteCabin } from './useDeleteCabin';
@@ -54,6 +56,17 @@ const Discount = styled.div`
 function CabinRow({ cabin }) {
 
   const [showForm, setShowForm] = useState(false);
+
+  //const {mutate: deleteCabin, isLoading: isDeleting} = useMutation({
+  //   mutationFn: deleteCabinApi,
+  //   onSuccess: () => {
+  //     console.log("Cabin deleted successfully");
+  //   },
+  //   onError: (error) => {
+  //     console.error(error.message);
+  //   }
+  // })
+  //OR
 
   // IMPORTANT 
   const { isDeleting, deleteCabin } = useDeleteCabin();

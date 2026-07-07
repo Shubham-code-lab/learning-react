@@ -20,7 +20,7 @@ const queryClient = new QueryClient({
     queries: {
       // amount of time data in the cache will remain fresh 
       // staleTime: 60 * 1000,      //1 min
-      staleTime: 30 * 1000,     //data is always in stale state
+      staleTime: 30 * 1000,     // 30 seconds - data is fresh for 30s, then becomes stale
     }
   }
 });
@@ -81,9 +81,11 @@ export default App;
 //react query :- (data fetching and remote state management)  alternative (SWR , RTK query)
 //powerful library for managing remote (server) state
 //Many feature that allow us to write a lot less code, while also making  the UX a lot better.
-//1] fetched Data is stored in cache.  (component A fetch data and then data is cached then if component B also need same data then it take from cache)
+//1] fetched Data is stored in cache.  (component A fetch data and then data is cached then if component B also need same data then 
+// it take from cache)
 //2] Automatic loading and error states. ()
-//3] Automatic re-fetching to keep state synched. (re-fetch after certain time or when we come back to the page or when other user on there machine update the data then other machine using same website need to be sync with data)
+//3] Automatic re-fetching to keep state synched. (re-fetch after certain time or when we come back to the page or when other user 
+// on there machine update the data then other machine using same website need to be sync with data)
 //4] pre-fetching. (i.e :- pre-fetching for pagination for current and next page ) 
 //5] Easy remote state mutation. (updating)
 //6] offline support (cached data can be used when user is offline)
@@ -108,3 +110,8 @@ export default App;
 
 //React Hook Form  (used for form submission and error)
 // npm i react-hook-form@7
+
+
+//Components to learn :-
+//Cabins.jsx, CabinTable.jsx, CabinRow.jsx, CreateCabinForm.jsx, EditCabinForm.jsx, DeleteCabinButton.jsx, updatingSettingsForm.jsx
+//FileInput.jsx, FormRow.jsx, services folder, cabins folder.

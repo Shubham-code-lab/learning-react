@@ -46,11 +46,19 @@ const TableHeader = styled.header`
 function CabinTable() {
   const {isLoading, cabins} = useCabin();
 
+  // const queryResult = useQuery({
+  //   queryKey: ['cabins'],     //unique key to identify the data  //also used to read data from cache
+  //   // queryFn: () => fetch("http://localhost:5173/cabins").then((res) => res.json())    //we just need any function that returns a promise
+  //   queryFn: getCabins
+  // });
+
+  // console.log(queryResult);  //isLoading, data, error, isStale, isFetching, isRefetching, isError, isSuccess
+
   if(isLoading)return  <Spinner />
 
   return (
-      <Table >
-        <TableHeader>
+      <Table role="table">
+        <TableHeader role="row">
           <div></div>
           <div>Cabin</div>
           <div>Capacity</div>

@@ -3,6 +3,7 @@ import { deleteCabin as deleteCabinApi } from "../../services/apiCabins"
 import toast from "react-hot-toast";
 
 export function useDeleteCabin(){
+    //useQueryClient is used to manipulate the query cache data, which is different from the useQuery hook which is used to fetch data
     const queryClient = useQueryClient();
 
     //mutating data
@@ -17,8 +18,8 @@ export function useDeleteCabin(){
         queryKey: ["cabins"],
         })
     },
-    //if API  fail react query will try to make call again and again for some time to fetch the data
-    //
+    //note this for useQuery hook if API  fail react query will try to make call again and again for some time to fetch the data
+    //for useMutation we have to add retry: 3, to try again and again.
     onError: err => toast.error(err.message)   //error thrown by mutation function deleteCabin
     })
 

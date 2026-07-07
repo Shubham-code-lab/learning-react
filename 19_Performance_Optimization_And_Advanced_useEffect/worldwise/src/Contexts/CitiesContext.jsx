@@ -186,7 +186,7 @@ function CitiesProvider({children}){
 function useCities(){
     const context =  useContext(CitiesContext);
 
-    // if we try to access the consumer outside of it scope i.e:- you can't use it in App component as it is only avaible to it's children
+    // if we try to access the consumer outside of it scope i.e:- you can't use it in App component as it is only available to it's children
     if(context === undefined) throw new Error("CitiesContext was used outside the CitiesProvider");
     return context;
 }
